@@ -5,6 +5,7 @@
 *.asv
 *.synctex.gz
 *.synctex.gz.sum.synctex
+*.sublime-workspace
 
 # ignore certain folders
 .build*/
