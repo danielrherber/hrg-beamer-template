@@ -1,0 +1,67 @@
+%------------------------------
+\begin{myslide}{c}{\lstinline{myfig} Command}
+
+\myfig{../figures/csu.pdf}{0.25}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{\lstinline{myfigcol} Command}
+
+\begin{columns}
+
+\begin{column}{0.7\textwidth}
+\lipsum[66]
+\end{column}
+
+\myfigcol{../figures/csu.pdf}{0.15}
+
+\end{columns}
+
+\begin{columns}[t]
+
+\myfigcol{../figures/csu.pdf}{0.25}
+
+\myfigcol{../figures/csu.pdf}{0.20}
+
+\myfigcol{../figures/csu.pdf}{0.15}
+
+\end{columns}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{\lstinline{myoverpic} Environment}
+
+\begin{myoverpic}{../figures/csu.pdf}{0.25}
+\put (0,0) {\scalebox{0.75}{Text}}%
+\put (50,97) {\makebox[0pt]{\textcolor{nicered}{Centered Text}}}%
+\end{myoverpic}
+
+\vspace*{\baselineskip}
+
+\begin{myoverpic}{../figures/csu.pdf}{0.25}
+\put (0,0) {\includegraphics[scale=0.05]{../figures/csu.pdf}}%
+\put (50,115) {\makebox[0pt]{\textcolor{niceblue}{Above Centered Text}}}%
+\end{myoverpic}
+
+\end{myslide}
+
+%------------------------------
+\begin{myslide}{c}{\lstinline{myoverpiccol} Environment}
+
+\begin{columns}[t]
+
+\begin{myoverpiccol}{../figures/csu.pdf}{0.25}
+\put (0,0) {\scalebox{0.75}{Text}}%
+\put (50,97) {\makebox[0pt]{\textcolor{nicered}{Centered Text}}}%
+\end{myoverpiccol}
+
+\begin{myoverpiccol}{../figures/csu.pdf}{0.25}
+\put (0,0) {\includegraphics[scale=0.05]{../figures/csu.pdf}}%
+\put (50,115) {\makebox[0pt]{\textcolor{niceblue}{Above Centered Text}}}%
+\end{myoverpiccol}
+
+\end{columns}
+
+\end{myslide}
