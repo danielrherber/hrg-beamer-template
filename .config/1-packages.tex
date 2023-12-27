@@ -2,13 +2,15 @@
 % low-level LaTeX programming
 %----------------------------------------------------------------
 
-
 \newcommand\hmmax{0}
 \newcommand\bmmax{0}
 
 % e-TeX tools for LaTeX
 % https://ctan.org/pkg/etoolbox
 \usepackage{etoolbox}
+
+
+\usepackage{xpatch}
 
 % a generic document command parser
 % https://ctan.org/pkg/xparse
@@ -22,8 +24,13 @@
 % https://ctan.org/pkg/xcolor
 \usepackage{xcolor}
 
+% print lengths using specified units
+% https://ctan.org/pkg/printlen
+\usepackage{printlen}
 
 \usepackage{tikz}
+
+
 
 %----------------------------------------------------------------
 % language and fonts
@@ -228,6 +235,10 @@
 % change format of \today with commands for current time
 % https://ctan.org/pkg/datetime
 \usepackage[yyyymmdd]{datetime}
+
+% generate QR codes in LaTeX
+% https://ctan.org/pkg/qrcode
+\usepackage{qrcode}
 
 % producing 'blind' text for testing
 % https://ctan.org/pkg/blindtext

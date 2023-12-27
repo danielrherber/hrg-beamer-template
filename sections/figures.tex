@@ -65,3 +65,62 @@
 \end{columns}
 
 \end{myslide}
+
+%------------------------------
+\begin{myslidefragile}{c}{Sizes}
+
+Slide width \lstinline{\paperwidth}
+\def\x{\paperwidth}
+\uselengthunit{in}\printlength{\x}
+\uselengthunit{mm}\printlength{\x}
+\uselengthunit{pt}\printlength{\x}
+
+Slide height \lstinline{\paperheight}
+\def\x{\paperheight}
+\uselengthunit{in}\printlength{\x}
+\uselengthunit{mm}\printlength{\x}
+\uselengthunit{pt}\printlength{\x}
+
+Text width \lstinline{\textwidth}
+\def\x{\textwidth}
+\uselengthunit{in}\printlength{\x}
+\uselengthunit{mm}\printlength{\x}
+\uselengthunit{pt}\printlength{\x}
+
+Text height \lstinline{\textheight}
+\def\x{\textheight}
+\uselengthunit{in}\printlength{\x}
+\uselengthunit{mm}\printlength{\x}
+\uselengthunit{pt}\printlength{\x}
+
+New line height
+\lstinline{\baselineskip}
+\def\x{\baselineskip}
+\uselengthunit{in}\printlength{\x}
+\uselengthunit{mm}\printlength{\x}
+\uselengthunit{pt}\printlength{\x}
+
+\end{myslidefragile}
+
+%------------------------------
+\begin{myslide}{c}{Side-by-Side Recommended Figure Sizes}
+
+Recommended figure width 2 in (below)
+
+Recommended figure height 1.5 in (below)
+
+\begin{columns}
+
+\myfigcol{../figures/figure_size.pdf}{1}
+
+\myfigcol{../figures/figure_size.pdf}{1}
+
+\end{columns}
+
+\vspace{\baselineskip}
+
+Matlab recommended figure width 2.25 in
+
+Matlab recommended figure height 1.6875 in
+
+\end{myslide}

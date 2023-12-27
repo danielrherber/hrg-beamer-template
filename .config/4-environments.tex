@@ -22,21 +22,21 @@
 
 % theorems
 \newenvironment{mytheorem}[1]
-{\begin{theorem}[#1]
+{\begin{theorem}[#1]\RaggedRight
 }%
 {\end{theorem}}
 
 % definitions
 \newtheorem{xdefinition}{Definition}
 \newenvironment{mydefinition}[1]
-{\begin{xdefinition}[#1]
+{\begin{xdefinition}[#1]\RaggedRight
 }%
 {\end{xdefinition}}
 
 % algorithms
 \newtheorem{xalgorithm}{Algorithm}
 \newenvironment{myalgorithm}[1]
-{\begin{xalgorithm}[#1]
+{\begin{xalgorithm}[#1]\RaggedRight
 }%
 {\end{xalgorithm}}
 
@@ -114,5 +114,8 @@ after skip=0.35\baselineskip,
 %       \node at (path picture bounding box.center) {
 %         \usebox{\picbox}};
 %     }] {};}
+
+
+
 
 

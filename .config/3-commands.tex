@@ -411,3 +411,10 @@ breaklines=true,
 \egroup%
 \miniframeson%
 }
+
+%---------------------------------------------------------
+% QR code
+%---------------------------------------------------------
+\newcommand{\myqrcode}[1]{\begin{tcolorbox}[hbox,boxsep=0pt,left=4pt,right=4pt,top=4pt,bottom=4pt]
+\qrcode[hyperlink,height=0.75in]{\detokenize{#1}}
+\end{tcolorbox}}
