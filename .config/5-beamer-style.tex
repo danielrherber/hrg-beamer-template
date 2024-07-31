@@ -202,24 +202,24 @@
 % https://tex.stackexchange.com/questions/203764
 \renewcommand*{\bibfont}{\small}
 
-% 
+%
 \RaggedRight
 \let\raggedright=\RaggedRight
 
 
-% 
+%
 \makeatletter
 \def\@minipagerestore{\RaggedRight}
 \makeatother
 
-% 
+%
 \addtobeamertemplate{block begin}{%
     \centering%
     \setlength{\textwidth}{0.85\textwidth}%
 }{}
 
 
-% 
+%
 \BeforeBeginEnvironment{block}{\begin{adjustbox}{minipage={\linewidth}, center}}
 \AfterEndEnvironment{block}{\end{adjustbox}\vspace*{0.05in}}
 
@@ -348,7 +348,7 @@
 
 % \newcommand{\mylinewhite}[1]{\textcolor{white}{\rule{#1}{0.8pt}}}
 
-% 
+%
 % initialize section counter
 \newcounter{seccount}
 \setcounter{seccount}{0}
@@ -481,6 +481,18 @@
 \begin{align}%
 \BODY
 \end{align}
+}}}%
+}
+
+\NewEnviron{extraleftalignsub}[1]{%
+\newline\vspace*{-1pt}%
+\setlength{\belowdisplayskip}{5pt}%
+\addtocounter{beamerpauses}{-1}\uncover<+->{\makebox[\linewidth]{\hspace{#1}\parbox{\dimexpr\linewidth-#1}{%
+\begin{subequations}%
+\begin{align}%
+\BODY
+\end{align}%
+\end{subequations}%
 }}}%
 }
 
