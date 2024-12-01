@@ -120,6 +120,16 @@
 }%
 
 
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+    \protect\leavevmode
+    \begingroup
+    \color#1{#2}#3%
+    \endgroup
+}
+\makeatother
+
 \newcommand{\eqrepeat}{\addtocounter{equation}{-1}}
 
 \NiceMatrixOptions{
@@ -342,6 +352,8 @@ breaklines=true,
 \newcommand{\myhref}[2]{\textcolor{textcoloremph}{\scalebox{0.9}{\faLink}\,\href{#1}{#2}}}
 
 \newcommand{\myhrefvideo}[2]{\textcolor{textcoloremph}{\scalebox{0.9}{\faVideo}\,\href{#1}{#2}}}
+
+\newcommand{\urlyoutube}[1]{\textcolor{textcoloremph}{\scalebox{0.9}{\faYoutube}\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0}{\detokenize{#1}}}}
 
 %----------------------------------------------------------------
 % parnotes
