@@ -357,7 +357,17 @@ breaklines=true,
 
 \newcommand{\myhrefvideo}[2]{\textcolor{textcoloremph}{\scalebox{0.9}{\faVideo}\,\href{#1}{#2}}}
 
-\newcommand{\urlyoutube}[1]{\textcolor{textcoloremph}{\scalebox{0.9}{\faYoutube}\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0}{\detokenize{#1}}}}
+\newcommand{\urlyoutube}[1]{%
+\begin{tikzpicture}[baseline=(A.base)]%
+  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0}{\detokenize{#1}}}}};%
+\end{tikzpicture}%
+}
+
+\newcommand{\urlyoutubetime}[2]{%
+\begin{tikzpicture}[baseline=(A.base)]%
+  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0&start=#2}{\detokenize{#1}}}}};%
+\end{tikzpicture}%
+}
 
 %----------------------------------------------------------------
 % parnotes
