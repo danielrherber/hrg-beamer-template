@@ -63,7 +63,7 @@
 \end{myslide}
 
 %------------------------------
-\begin{myslide}{c}{Special Call-Out Boxes (2)}
+\begin{myslidefragile}{c}{Special Call-Out Boxes (2) --- Animated}
 
 \begin{columns}
 
@@ -79,20 +79,68 @@
 \item \lipsum[1][6]%
 
 \itembox
-\begin{myquestion}
-\lipsum[1][1]
-\end{myquestion}
+\begin{myimportant}
+\lipsum[1][1-2]
+\end{myimportant}
 
 \itembox
-\begin{myremark}
+\begin{myfuture}
 \lipsum[1][1]
-\end{myremark}
+\end{myfuture}
 
 \item \lipsum[1][6]
+
+\begin{itemize}
+
+\item Note use of \lstinline{\unskip} for better spacing with boxes after nested lists
+
+\end{itemize}
+
+\unskip
+
+\itembox
+\begin{myquestion}
+\lipsum[1][2-3]
+\end{myquestion}
 
 \end{itemize}
 
 \end{column}
+
+\end{columns}
+
+\end{myslidefragile}
+
+%------------------------------
+\begin{myslide}{c}{\lstinline{myfigcol} Command --- Animated}
+
+\begin{columns}
+
+\uncover<+->{%
+\begin{column}{0.7\textwidth}
+\lipsum[66]
+\end{column}%
+}
+
+\uncover<+->{%
+\myfigcol{\mygraphicspath/csu.pdf}{0.15}%
+}
+
+\end{columns}
+
+\begin{columns}[t]
+
+\uncover<+->{%
+\myfigcol{\mygraphicspath/csu.pdf}{0.25}%
+}
+
+\uncover<+->{%
+\myfigcol{\mygraphicspath/csu.pdf}{0.20}%
+}
+
+\uncover<+->{%
+\myfigcol{\mygraphicspath/csu.pdf}{0.15}%
+}
 
 \end{columns}
 
