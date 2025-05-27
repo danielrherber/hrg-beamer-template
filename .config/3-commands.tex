@@ -493,7 +493,7 @@ breaklines=true,
 \newcommand{\termformat}[1]{\textit{\textcolor{textcoloremph}{#1}}}
 
 % my term display command
-\newcommand{\termdisplay}[1]{\textcolor{textcoloremph}{\scalebox{0.9}{\faHashtag}}\termformat{#1}}
+\newcommand{\termdisplay}[1]{\textcolor{textcoloremph}{\scalebox{0.9}{\faHashtag}}}
 
 % use md5 hash that better supports equations
 % https://tex.stackexchange.com/questions/252566/calculate-the-hash-md5-or-otherwise-of-a-string
@@ -501,9 +501,11 @@ breaklines=true,
 
 % command to define term and add to mytermlist
 \newcommand{\myterm}[1]{%
-\pagetarget{\termlabel{#1}}{\termdisplay{#1}}%
+\raisebox{0pt}[0pt][0pt]{\pagetarget{\termlabel{#1}}{\termdisplay{#1}}}\termformat{#1}%
+\only<1>{%
 \additem{mytermlist}{%
-\hyperlink{\termlabel{#1}}{\termformat{#1}}}{\text{ is on }\hyperlink{\termlabel{#1}}{Slide \ref{\termlabel{#1}-label}}}%
+\hyperlink{\termlabel{#1}}{\termformat{#1}}}{\text{ is on }\hyperlink{\termlabel{#1}}{Slide~\ref{\termlabel{#1}-label}}}%
+}%
 }
 
 % term slides page
