@@ -10,5 +10,6 @@
 
 # ignore certain folders
 **/.build/
+**/pdfsizeopt/
 
 # ignore specific files

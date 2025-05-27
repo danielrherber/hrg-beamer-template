@@ -25,7 +25,7 @@ pdflatex -interaction=batchmode -synctex=0 --aux-directory=.build $filename
 $filenamepdf = $filename+".pdf"
 
 # requires pdfsizeopt (https://github.com/pts/pdfsizeopt)
-./../../../.config-specific/pdfsizeopt/pdfsizeopt --do-optimize-images=no $filenamepdf $filenamepdf
+./.config/pdfsizeopt/pdfsizeopt --do-optimize-images=no $filenamepdf $filenamepdf
 
 Write-Host $(" ")
 Write-Host $("--- Finished "+$filename+" ---")
@@ -56,7 +56,7 @@ pdflatex -interaction=batchmode -synctex=0 --aux-directory=.build $darkfilename
 $darkfilenamepdf = $darkfilename+".pdf"
 
 # requires pdfsizeopt (https://github.com/pts/pdfsizeopt)
-./../../../.config-specific/pdfsizeopt/pdfsizeopt --do-optimize-images=no $darkfilenamepdf $darkfilenamepdf
+./.config/pdfsizeopt/pdfsizeopt --do-optimize-images=no $darkfilenamepdf $darkfilenamepdf
 
 Write-Host $(" ")
 Write-Host $("--- Finished "+$darkfilename+" ---")
@@ -87,7 +87,7 @@ pdflatex -interaction=batchmode -synctex=0 --aux-directory=.build $animatedfilen
 $animatedfilenamepdf = $animatedfilename+".pdf"
 
 # requires pdfsizeopt (https://github.com/pts/pdfsizeopt)
-./../../../.config-specific/pdfsizeopt/pdfsizeopt --do-optimize-images=no $animatedfilenamepdf $animatedfilenamepdf
+./.config/pdfsizeopt/pdfsizeopt --do-optimize-images=no $animatedfilenamepdf $animatedfilenamepdf
 
 Write-Host $(" ")
 Write-Host $("--- Finished "+$animatedfilename+" ---")
