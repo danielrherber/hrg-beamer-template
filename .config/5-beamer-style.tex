@@ -537,3 +537,57 @@
 \end{subequations}%
 }}}%
 }
+
+
+%----------------------------------------------------------------
+% note page formatting
+%----------------------------------------------------------------
+
+% \setbeamertemplate{note page}{%
+%   \vskip.25em
+%   \nointerlineskip
+%   \insertnote
+% }
+
+\setbeamertemplate{note page}{%
+  {%
+    \scriptsize
+    \usebeamerfont{note title}\usebeamercolor[fg]{note title}%
+    \ifbeamercolorempty[bg]{note title}{}{%
+      \insertvrule{.35\paperheight}{mediumgray}%
+      \vskip-.35\paperheight%
+      \nointerlineskip%
+    }%
+    \vbox{
+      \hfill\insertslideintonotes{0.35} %\hskip-\Gm@rmargin\hskip0pt%
+      \vskip-0.35\paperheight%
+      \nointerlineskip
+    }
+    \nointerlineskip
+    \vbox to .35\paperheight{%
+      \vfil
+
+      \myemph{[Section]}\\
+      \insertsection
+      \vskip0.5em
+
+      \myemph{[Subsection]}\\
+      \insertsubsection
+      \vskip0.5em
+
+      \myemph{[Title]}\\
+      \insertshortframetitle
+
+      \vfil}%
+  }%
+  \ifbeamercolorempty[bg]{note page}{}{%
+    \nointerlineskip%
+    \insertvrule{.65\paperheight}{lightgray}%
+    \vskip-.65\paperheight%
+  }%
+  \vskip.25em
+  \nointerlineskip
+  {\large\setlength{\parskip}{8pt}%
+  \insertnote%
+  }
+}
