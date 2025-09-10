@@ -528,3 +528,18 @@ breaklines=true,
 \newcommand{\myqrcode}[1]{\begin{tcolorbox}[hbox,boxsep=0pt,left=4pt,right=4pt,top=4pt,bottom=4pt]
 \qrcode[hyperlink,height=0.75in]{\detokenize{#1}}
 \end{tcolorbox}}
+
+
+%---------------------------------------------------------
+% loading URL from a file, often due to special characters like #
+%---------------------------------------------------------
+\newcommand\myhrefFromFile[1]{%
+    \CatchFileDef\myurl{#1}{\catcode`\#=12\catcode`\%=12\endlinechar=-1}%
+    \expandafter\myhref\expandafter{\myurl}}
+
+
+% \begin{filecontents*}{gp.txt}
+% https://cvxopt.org/userguide/solvers.html#geometric-programming
+% \end{filecontents*}
+
+% \myhrefFromFile{gp.txt}{cvxopt.org/userguide/solvers.html\#geometric-programming}
