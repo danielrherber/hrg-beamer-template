@@ -7,17 +7,24 @@
 % copyright info
 \newcommand{\xcopyright}{\textcolor{textcoloremph}{\textcopyright{} \the\year{} Name. All Rights Reserved.}}
 
+% control csu-brand-circle being included in the title slide
+\def\brandcircle{1}
+
+% title and subtitle strings
+\def\mytitle{Title}
+\def\mysubtitle{Subtitle}
+
 % title
 \title{\texorpdfstring{%
 \setbeamercolor{background canvas}{bg=}%
-\begin{textblock*}{\paperwidth}(0pt,0.26\paperheight)\centering%
+\begin{textblock*}{\paperwidth}(0pt,0.23\paperheight)\centering%
 \begin{minipage}[c]{0.95\paperwidth}\centering%
-\textcolor{textcolor}{\huge{Title}} \\
+\textcolor{textcolor}{\huge{\mytitle}} \\
 \vspace*{0.25\baselineskip}%
-\textcolor{textcoloremph}{\Large{\textit{Subtitle}}}%
+\textcolor{textcoloremph}{\Large{\textit{\mysubtitle}}}%
 \end{minipage}%
 \end{textblock*}%
-}{Title: Subtitle}}
+}{\mytitle: \mysubtitle}}
 
 % author
 \author[Name]{\texorpdfstring{%
@@ -47,8 +54,13 @@
 \includegraphics[height=0.6in]{{\configpath}figures/csu.pdf}
 \fi
 \end{textblock}
-}
 
+\begin{textblock*}{\paperwidth}(0pt,0.47\paperheight)\centering%
+\if\brandcircle1
+\includegraphics[width=\textwidth]{{\configpath}figures/csu-brand-circle.pdf}
+\fi
+\end{textblock*}%
+}
 
 \newcommand*{\tran}{^{\intercal}}
 
