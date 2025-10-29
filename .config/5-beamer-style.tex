@@ -380,8 +380,44 @@
 
 }
 
+\newcommand{\mysectionpagealt}[1]{
+\stepcounter{seccount}
+\miniframesoff
+\bgroup
+\setbeamercolor{background canvas}{bg=fixedbgcolor}
+\begin{frame}[noframenumbering,plain]
 
+\begin{textblock*}{\paperwidth}(0.335\paperwidth,-0.19\paperheight)\centering%
+\begin{minipage}[c]{0.95\paperwidth}\centering%
+\includegraphics[height=4.6in]{{\configpath}figures/csu-background.pdf}
+\end{minipage}%
+\end{textblock*}%
 
+\begin{textblock*}{\paperwidth}(-0.35\paperwidth,0.10\paperheight)\centering%
+\begin{minipage}[l]{0.95\paperwidth}\centering%
+\textpdfrender{%
+TextRenderingMode = FillStroke,
+LineWidth = 0.2pt,
+FillColor = csugreen,
+StrokeColor = csugold,
+}{\scalebox{7.5}{\textbf{\theseccount}}}
+\end{minipage}%
+\end{textblock*}%
+
+\begin{textblock*}{\paperwidth}(0\paperwidth,0.5\paperheight)\centering%
+\begin{minipage}[c]{1\paperwidth}\centering%
+\begin{columns}\centering
+\column{0.8\textwidth}\centering%
+\color{fixedtextcolor}\fontsize{24}{32}\selectfont #1%
+\end{columns}
+\end{minipage}%
+\end{textblock*}%
+
+\end{frame}
+\egroup
+\miniframeson
+
+}
 
 %-----------
 % animations
