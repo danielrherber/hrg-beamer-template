@@ -280,16 +280,16 @@
 
 % ?
 \makeatletter
-\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
 \def\beamer@writeslidentry@miniframesoff{%
-  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  \expandafter\ifblank\expandafter{\beamer@framestartpage}{}% does not happen normally
   {%else
     % removed \addtocontents commands
     \clearpage\beamer@notesactions%
-  }
-}
-\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
-\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+  }%
+}%
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}%
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}%
 \makeatother
 
 
@@ -309,33 +309,77 @@
     \def\insertsectionheadnumber{#1}%
     \def\insertpartheadnumber{#5}%
     {%
-      \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
-      \ifnum\c@section=#1%
-        \hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot}}}%
-      \else%
-        \hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot shaded}}}%
+      \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}% select formatting
+      \ifnum\c@section=#1% current section
+        {\kern-0.5pt}\hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot}}}%
+      \else% not current section
+        {\kern-0.5pt}\hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot shaded}}}%
       \fi}%
   }%
-  \ht\beamer@sectionbox=1.875ex%
-  \dp\beamer@sectionbox=0.75ex%
+  \ht\beamer@sectionbox=1.1ex% section box's hyperlink upper bound (match height of text)
+  \dp\beamer@sectionbox=0ex% section box's hyperlink lower bound
   \fi\ignorespaces}
 \def\insertnavigation#1{%
   \vbox{{%
-    \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}% select formatting
     \beamer@xpos=0\relax%
-    \beamer@ypos=1\relax%
+    \beamer@ypos=0\relax%
+    \beamer@ypos@offset=0\relax%
     \hbox to #1{\hskip\sectionsep\setbox\beamer@sectionbox=\hbox{\kern1sp}%
-      \ht\beamer@sectionbox=1.875ex%
-      \dp\beamer@sectionbox=0.75ex%
+      \ht\beamer@sectionbox=0ex%
+      \dp\beamer@sectionbox=0ex%
         \hskip-\sectionsep% original -1.875ex plus 1fill
         \global\beamer@section@min@dim\z@
         \dohead%\hskip\sectionsep%
         \beamer@section@set@min@width
-      \box\beamer@sectionbox\hfill\hfill%
-      \raisebox{-2pt}{\insertframenumber}\hskip\sectionsep%
-      %\hfill%\hskip.3cm
+      \box\beamer@sectionbox\hfill%
       }%
-  }}}
+  }}%
+}
+\setbeamertemplate{headline}
+{%
+  \begin{beamercolorbox}{section in head/foot}%
+    \begin{minipage}[c][4.764mm]{0.96\paperwidth}%
+    \insertnavigation{0.96\paperwidth}%
+    \end{minipage}%
+    \begin{minipage}[c][4.764mm]{0.0249\paperwidth}%
+    \raggedleft%
+    \insertframenumber%
+    \end{minipage}%
+  \end{beamercolorbox}%
+}
+\makeatother
+
+% https://tex.stackexchange.com/questions/331050/how-to-increase-the-size-of-navigation-circles
+\makeatletter
+\newlength\mycirclesize
+\setlength\mycirclesize{0.05cm}
+
+\setbeamertemplate{mini frame}{%
+  \beamer@xelatex@fixminiframes%
+  \begin{pgfpicture}{0.5\mycirclesize}{0.5\mycirclesize}{1.5\mycirclesize}{1.5\mycirclesize}%
+    \pgfpathcircle{\pgfpoint{\mycirclesize}{\mycirclesize}}{\mycirclesize}%
+    \pgfusepath{fill,stroke}%
+  \end{pgfpicture}%
+}
+
+\setbeamertemplate{mini frame in current section}{%
+  \beamer@xelatex@fixminiframes%
+  \begin{pgfpicture}{0.5\mycirclesize}{0.5\mycirclesize}{1.5\mycirclesize}{1.5\mycirclesize}%
+    \pgfpathcircle{\pgfpoint{\mycirclesize}{\mycirclesize}}{\mycirclesize}%
+    \pgfusepath{stroke}%
+  \end{pgfpicture}%
+}
+
+\setbeamertemplate{mini frame in current subsection}{%
+  \beamer@xelatex@fixminiframes%
+  \begin{pgfpicture}{0.5\mycirclesize}{0.5\mycirclesize}{1.5\mycirclesize}{1.5\mycirclesize}%
+    \pgfpathcircle{\pgfpoint{\mycirclesize}{\mycirclesize}}{\mycirclesize}%
+    \pgfusepath{stroke}%
+  \end{pgfpicture}%
+}
+
+\setbeamersize{mini frame size=2.65\mycirclesize, mini frame offset=-0.65\mycirclesize}
 \makeatother
 
 %----------------------------------------------------------------
