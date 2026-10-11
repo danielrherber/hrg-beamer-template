@@ -141,6 +141,32 @@
 %
 \setbeamertemplate{frametitle continuation}[from second][(Continued)]
 
+% frame title formatting
+% beamer/base/themes/outer/beamerouterthemedefault.sty
+\makeatletter
+\defbeamertemplate*{frametitle}{customized}[1][left]
+{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+    \strut\mytitlemark\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+}
+\makeatother
+
 %----------------------------------------------------------------
 % reference formatting
 %----------------------------------------------------------------
@@ -424,16 +450,22 @@
 
 }
 
-\newcommand{\mysectionpagealt}[1]{
+\newcommand{\mysectionpagealt}[2][fixedbgcolor]{
 \stepcounter{seccount}
 \miniframesoff
 \bgroup
-\setbeamercolor{background canvas}{bg=fixedbgcolor}
+\setbeamercolor{background canvas}{bg=#1}
 \begin{frame}[noframenumbering,plain]
 
 \begin{textblock*}{\paperwidth}(0.335\paperwidth,-0.19\paperheight)\centering%
 \begin{minipage}[c]{0.95\paperwidth}\centering%
+\def\param{#1}%
+\def\darkestgray{darkestgray}%
+\ifx\param\darkestgray
+\includegraphics[height=4.6in]{{\configpath}figures/csu-gray.pdf}
+\else
 \includegraphics[height=4.6in]{{\configpath}figures/csu-background.pdf}
+\fi
 \end{minipage}%
 \end{textblock*}%
 
@@ -442,7 +474,7 @@
 \textpdfrender{%
 TextRenderingMode = FillStroke,
 LineWidth = 0.2pt,
-FillColor = csugreen,
+FillColor = #1,
 StrokeColor = csugold,
 }{\scalebox{7.5}{\textbf{\theseccount}}}
 \end{minipage}%
@@ -452,7 +484,7 @@ StrokeColor = csugold,
 \begin{minipage}[c]{1\paperwidth}\centering%
 \begin{columns}\centering
 \column{0.8\textwidth}\centering%
-\color{fixedtextcolor}\fontsize{24}{32}\selectfont #1%
+\color{fixedtextcolor}\fontsize{24}{32}\selectfont #2%
 \end{columns}
 \end{minipage}%
 \end{textblock*}%

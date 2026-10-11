@@ -233,7 +233,7 @@ breaklines=true,
 \section*{\texorpdfstring{\scalebox{0.87485779}{\faBookmark}}{References}}%
 \miniframesoff%
 \bgroup%
-\begin{frame}[c,allowframebreaks]{\mytitlemark References}%
+\begin{frame}[c,allowframebreaks]{References}%
 \label{sec:references}%
 % \nocite{*}
 \printbibliography[heading=none]
@@ -357,15 +357,17 @@ breaklines=true,
 
 \newcommand{\myhrefvideo}[2]{\textcolor{textcoloremph}{\scalebox{0.9}{\faVideo}\,\href{#1}{#2}}}
 
+% broken embed url option so just go to normal youtube
+% ?rel=0 also not working so removed
 \newcommand{\urlyoutube}[1]{%
 \begin{tikzpicture}[baseline=(A.base)]%
-  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0}{\detokenize{#1}}}}};%
+  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/watch?v=\detokenize{#1}}{\detokenize{#1}}}}};%
 \end{tikzpicture}%
 }
 
 \newcommand{\urlyoutubetime}[2]{%
 \begin{tikzpicture}[baseline=(A.base)]%
-  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/embed/\detokenize{#1}?rel=0&start=#2}{\detokenize{#1}}}}};%
+  \node (1) [rounded rectangle, inner sep = 3pt, fill=bgcolorlight] (A) {\textcolor{textcoloremph}{\text{\scalebox{0.9}{\faYoutube}}\text{\footnotesize\,\href{https://www.youtube.com/watch?v=\detokenize{#1}&start=#2}{\detokenize{#1}}}}};%
 \end{tikzpicture}%
 }
 
@@ -513,7 +515,7 @@ breaklines=true,
 \section*{\texorpdfstring{\scalebox{1}{\faHashtag}}{Terms}}%
 \miniframesoff%
 \bgroup%
-\begin{frame}[c,allowframebreaks]{\mytitlemark Terms}%
+\begin{frame}[c,allowframebreaks]{Terms}%
 \label{sec:terms}%
 \makelist{mytermlist}
 \unskip

@@ -9,7 +9,7 @@
 % main myslide
 \newenvironment{myslide}[2]
 {\begin{frame}[#1]%
-\frametitle{{\mytitlemark #2}}%
+\frametitle{#2}%
 \mytrans
 }%
 {\parnotes\end{frame}}
@@ -17,7 +17,7 @@
 % fragile myslide for listings (and other things)
 \newenvironment{myslidefragile}[2]
 {\begin{frame}[fragile,environment=myslidefragile,#1]%
-\frametitle{{\mytitlemark {#2}}}%
+\frametitle{#2}%
 \mytrans
 }%
 {\parnotes\end{frame}}
